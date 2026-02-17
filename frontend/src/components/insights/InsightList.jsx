@@ -496,6 +496,10 @@ const InsightList = () => {
 
   useEffect(() => { fetchInsights(); }, [page, filter]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
   const fetchInsights = async () => {
     try {
       setLoading(true);

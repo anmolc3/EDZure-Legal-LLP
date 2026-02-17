@@ -8,6 +8,7 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import LegalDisclaimerModal from './components/common/LegalDisclaimerModal';
 import ShareButton from './components/common/ShareButton';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Public Pages
 import Home from './components/pages/Home';
@@ -46,6 +47,7 @@ function App() {
     <HelmetProvider>
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <div className="App">
             <LegalDisclaimerModal />
             <Navbar />
