@@ -1,0 +1,51 @@
+<svg
+  width="260"
+  height="60"
+  viewBox="0 0 260 60"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="EdZure Legal Logo"
+>
+  <defs>
+    <!-- Animated gold shimmer gradient -->
+    <linearGradient id="goldShimmer" x1="-100%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="#9e7d43"/>
+      <stop offset="40%" stop-color="#c5a059"/>
+      <stop offset="50%" stop-color="#f5e3b0"/>
+      <stop offset="60%" stop-color="#c5a059"/>
+      <stop offset="100%" stop-color="#9e7d43">
+        <animate
+          attributeName="offset"
+          from="0"
+          to="1"
+          dur="2.5s"
+          repeatCount="indefinite"
+        />
+      </stop>
+    </linearGradient>
+  </defs>
+
+  <!-- EdZure (White) -->
+  <text
+    x="0"
+    y="42"
+    font-family="Playfair Display, serif"
+    font-size="36"
+    font-weight="700"
+    fill="#ffffff"
+  >
+    EdZure
+  </text>
+
+  <!-- Legal (Gold Shimmer) -->
+  <text
+    x="135"
+    y="42"
+    font-family="Playfair Display, serif"
+    font-size="36"
+    font-weight="700"
+    fill="url(#goldShimmer)"
+  >
+    Legal
+  </text>
+</svg>

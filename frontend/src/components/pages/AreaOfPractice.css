@@ -1,0 +1,564 @@
+/* =============================================
+   AREA OF PRACTICE — EdZure Legal LLP
+   Dark navy · Gold · Glassmorphism
+   ============================================= */
+
+/* ── Page shell ── */
+.aop-page {
+  background: #0f172a;
+  min-height: 100vh;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.aop-hero {
+  position: relative;
+  padding: 80px 20px 90px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0a1120 0%, #0f172a 50%, #111c35 100%);
+}
+
+/* Subtle dot-grid texture */
+.aop-hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(197, 160, 89, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Ambient glows */
+.aop-hero-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.aop-hero-glow--left {
+  background: #c5a059;
+  top: -120px;
+  left: -160px;
+}
+
+.aop-hero-glow--right {
+  background: #1e3c72;
+  bottom: -140px;
+  right: -180px;
+}
+
+.aop-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* Overline label */
+.aop-overline {
+  display: inline-block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #c5a059;
+  margin-bottom: 16px;
+}
+
+.aop-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin: 0 0 28px;
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroTitleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Gold divider */
+.aop-hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.aop-divider-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.6), transparent);
+}
+
+.aop-divider-icon {
+  font-size: 1.4rem;
+  color: #c5a059;
+  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.5));
+}
+
+.aop-hero-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 48px;
+  animation: fadeUp 1s ease 0.25s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stats bar */
+.aop-hero-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  padding: 24px 44px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  animation: fadeUp 1s ease 0.45s both;
+}
+
+.aop-stat {
+  text-align: center;
+}
+
+.aop-stat-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c5a059;
+  line-height: 1;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 8px rgba(197, 160, 89, 0.35);
+}
+
+.aop-stat-label {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.aop-stat-sep {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(180deg, transparent, rgba(197, 160, 89, 0.4), transparent);
+}
+
+/* =============================================
+   CARDS GRID SECTION
+   ============================================= */
+.aop-grid-section {
+  padding: 80px 20px 100px;
+  background: linear-gradient(180deg, #0f172a 0%, #0d1526 100%);
+  position: relative;
+}
+
+.aop-grid-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 40% 50% at 0% 40%, rgba(197, 160, 89, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 100% 60%, rgba(28, 61, 122, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.aop-grid-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* 3-column grid */
+.aop-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Individual card ── */
+.aop-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 36px 30px 28px;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Entrance animation — starts hidden */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Visible once IntersectionObserver fires */
+.aop-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover state */
+.aop-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(197, 160, 89, 0.25);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transform: translateY(-4px);
+}
+
+.aop-card--visible:hover {
+  transform: translateY(-4px);
+}
+
+/* Active/open state */
+.aop-card--active {
+  background: rgba(197, 160, 89, 0.06);
+  border-color: rgba(197, 160, 89, 0.35);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(197, 160, 89, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.aop-card--visible.aop-card--active {
+  transform: translateY(-4px);
+}
+
+/* Gold top strip — scales in on active */
+.aop-card-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c5a059, #f3d38b, #c5a059, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aop-card:hover .aop-card-strip,
+.aop-card--active .aop-card-strip {
+  transform: scaleX(1);
+}
+
+/* Card number — large background watermark */
+.aop-card-num {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(197, 160, 89, 0.07);
+  line-height: 1;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color 0.35s ease;
+}
+
+.aop-card:hover .aop-card-num,
+.aop-card--active .aop-card-num {
+  color: rgba(197, 160, 89, 0.13);
+}
+
+/* Icon */
+.aop-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.18);
+  color: #c5a059;
+  margin-bottom: 20px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aop-card:hover .aop-card-icon {
+  background: rgba(197, 160, 89, 0.14);
+  transform: scale(1.08);
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.2);
+}
+
+.aop-card--active .aop-card-icon {
+  background: rgba(197, 160, 89, 0.18);
+  box-shadow: 0 4px 20px rgba(197, 160, 89, 0.25);
+}
+
+/* Title */
+.aop-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.35;
+  margin: 0 0 18px;
+  transition: color 0.25s ease;
+}
+
+.aop-card:hover .aop-card-title,
+.aop-card--active .aop-card-title {
+  color: #f3d38b;
+}
+
+/* Expand chevron */
+.aop-card-expand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(197, 160, 89, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  transition: color 0.25s ease;
+}
+
+.aop-card:hover .aop-card-expand {
+  color: rgba(197, 160, 89, 0.8);
+}
+
+.aop-card--active .aop-card-expand {
+  color: #c5a059;
+}
+
+.aop-expand-icon {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aop-card--active .aop-expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Description drawer — height animates open */
+.aop-card-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+
+.aop-card--active .aop-card-desc {
+  max-height: 260px;
+  opacity: 1;
+}
+
+.aop-card-desc p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.75;
+  margin: 18px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+}
+
+/* Ambient glow on hover (decorative) */
+.aop-card-glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.aop-card:hover .aop-card-glow,
+.aop-card--active .aop-card-glow {
+  opacity: 1;
+}
+
+/* =============================================
+   CTA BAND
+   ============================================= */
+.aop-cta {
+  padding: 90px 20px;
+  background: linear-gradient(135deg, #0a1120 0%, #111c35 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-top: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.aop-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(197, 160, 89, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.aop-cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.aop-cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 10px 0 18px;
+}
+
+.aop-cta-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.aop-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 44px;
+  background: linear-gradient(135deg, #f3d38b 0%, #c5a059 50%, #9e7d43 100%);
+  color: #0f172a;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 28px rgba(197, 160, 89, 0.38);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aop-cta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.aop-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(197, 160, 89, 0.55);
+}
+
+.aop-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media screen and (max-width: 1024px) {
+  .aop-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aop-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .aop-hero-stats {
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px 36px;
+    border-radius: 20px;
+  }
+
+  .aop-stat-sep {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.4), transparent);
+  }
+
+  .aop-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .aop-cta-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aop-hero {
+    padding: 60px 16px 70px;
+  }
+
+  .aop-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .aop-cta-btn {
+    padding: 14px 32px;
+    font-size: 0.85rem;
+  }
+}

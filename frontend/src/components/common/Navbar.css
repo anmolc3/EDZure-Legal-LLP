@@ -1,0 +1,340 @@
+/* =============================================
+   TOP NAVBAR — Glassmorphism
+   ============================================= */
+
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 900;
+
+  background: rgba(10, 17, 35, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+}
+
+.top-navbar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 70px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Logo ── */
+.top-navbar__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.top-navbar__logo svg {
+  display: block;
+}
+
+.top-navbar__logo:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+/* ── Nav links ── */
+.top-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top-navbar__link {
+  position: relative;
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+/* Gold underline */
+.top-navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  background: linear-gradient(90deg, #c5a059, #f5e3b0);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.top-navbar__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.top-navbar__link:hover::after,
+.top-navbar__link.active::after {
+  transform: scaleX(1);
+}
+
+.top-navbar__link.active {
+  color: #f5e3b0;
+}
+
+/* Logout pill */
+.top-navbar__logout {
+  margin-left: 10px;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, #c5a059, #9e7d43);
+  color: #fff !important;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(197, 160, 89, 0.3);
+  transition: all 0.3s ease;
+}
+
+.top-navbar__logout::after {
+  display: none;
+}
+
+.top-navbar__logout:hover {
+  background: linear-gradient(135deg, #d4af63, #b08a4d);
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.5);
+  transform: translateY(-1px);
+}
+
+/* =============================================
+   HAMBURGER BUTTON — hidden on desktop
+   ============================================= */
+.top-navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  z-index: 1001;
+}
+
+.top-navbar__hamburger:hover {
+  background: rgba(197, 160, 89, 0.12);
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+/* Three bars */
+.top-navbar__bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #d1d5db;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease,
+    width 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate bars → X when open */
+.top-navbar__hamburger.open .top-navbar__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.top-navbar__hamburger.open .top-navbar__bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.top-navbar__hamburger.open .top-navbar__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =============================================
+   MOBILE DRAWER — slides in from top
+   ============================================= */
+.top-navbar__drawer {
+  display: none;
+  /* shown only in mobile media query */
+  position: fixed;
+  top: 70px;
+  /* sits right below the navbar bar */
+  left: 0;
+  width: 100%;
+  background: rgba(10, 17, 35, 0.97);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  z-index: 899;
+  /* Slide in/out */
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.top-navbar__drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.top-navbar__drawer-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px 24px;
+  gap: 4px;
+}
+
+/* Drawer links */
+.top-navbar__drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+  transition: color 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+
+.top-navbar__drawer-link::before {
+  content: '';
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, #c5a059, #f5e3b0);
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: height 0.25s ease;
+}
+
+.top-navbar__drawer-link:hover,
+.top-navbar__drawer-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.top-navbar__drawer-link:hover::before,
+.top-navbar__drawer-link.active::before {
+  height: 20px;
+}
+
+.top-navbar__drawer-link.active {
+  color: #f5e3b0;
+}
+
+/* Divider before admin links */
+.top-navbar__drawer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 8px 0;
+}
+
+/* Logout button in drawer */
+.top-navbar__drawer-logout {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #c5a059, #9e7d43);
+  color: #ffffff;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(197, 160, 89, 0.3);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.top-navbar__drawer-logout:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.top-navbar__drawer-logout::before {
+  display: none;
+}
+
+/* =============================================
+   RESPONSIVE — tablet: compact desktop links
+   ============================================= */
+@media screen and (max-width: 900px) {
+  .top-navbar__links {
+    gap: 0;
+  }
+
+  .top-navbar__link {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — mobile: show hamburger, hide links
+   ============================================= */
+@media screen and (max-width: 768px) {
+  .top-navbar__inner {
+    height: 62px;
+    padding: 0 20px;
+  }
+
+  /* Hide desktop nav links */
+  .top-navbar__links {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .top-navbar__hamburger {
+    display: flex;
+  }
+
+  /* Show drawer */
+  .top-navbar__drawer {
+    display: block;
+    top: 62px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .top-navbar__inner {
+    height: 58px;
+    padding: 0 16px;
+  }
+
+  .top-navbar__drawer {
+    top: 58px;
+  }
+}

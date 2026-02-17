@@ -1,0 +1,576 @@
+/* =========================================
+   INSIGHT LIST — EdZure Legal LLP
+   Reference: floating-image dark blog grid
+   Theme: dark navy #0f172a + gold #c5a059
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@400;700&display=swap');
+
+/* ==============================
+   HERO
+   ============================== */
+.insights-page-hero {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(20, 45, 100, 0.92)),
+    url('../../assets/hero-background.jpg') center / cover no-repeat;
+  padding: 70px 20px 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.insights-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(197, 160, 89, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(28, 61, 122, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.insights-overline {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #c5a059;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.insights-page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.12;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.insights-page-hero p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+
+/* — Search bar — */
+.insights-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 380px;
+  margin: 0 auto 28px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.insights-search-wrap:focus-within {
+  border-color: rgba(197, 160, 89, 0.5);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.08);
+}
+
+.insights-search-wrap svg {
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.insights-search-wrap input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.93rem;
+  color: #e2e8f0;
+}
+
+.insights-search-wrap input::placeholder {
+  color: #475569;
+}
+
+/* — Filter tabs — */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.filter-btn {
+  padding: 9px 24px;
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgba(197, 160, 89, 0.5);
+  color: #f3d38b;
+  background: rgba(197, 160, 89, 0.07);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #c5a059, #9e7d43);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(197, 160, 89, 0.28);
+}
+
+/* ==============================
+   BODY
+   ============================== */
+.insights-body {
+  background: #0f172a;
+  padding: 80px 20px 110px;
+  position: relative;
+}
+
+.insights-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 38% 45% at 0% 35%, rgba(197, 160, 89, 0.035) 0%, transparent 60%),
+    radial-gradient(ellipse 38% 45% at 100% 65%, rgba(28, 61, 122, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ==============================
+   3-COL BLOG GRID
+   Matches reference: floating image,
+   gap between image and text, no border
+   ============================== */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==============================
+   CARD  ← key redesign
+   image floats (rounded, slight shadow)
+   below: category+date | bold title
+         excerpt | avatar row
+   background: transparent (matches reference)
+   ============================== */
+.insight-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  /* stagger entrance */
+  animation: cardIn 0.55s ease both;
+}
+
+.insight-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.insight-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.insight-card:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.insight-card:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.insight-card:nth-child(5) {
+  animation-delay: 0.33s;
+}
+
+.insight-card:nth-child(6) {
+  animation-delay: 0.40s;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* — Floating image — */
+/* Key reference detail: image has its own rounded box
+   that is slightly taller than it sits on, creating
+   that "card floats above" look */
+.insight-image-link {
+  display: block;
+  width: 100%;
+  /* Reference: image ~ 56% of total card height */
+  height: 240px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #1a2744;
+  flex-shrink: 0;
+  text-decoration: none;
+  /* The gap below image before text */
+  margin-bottom: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  position: relative;
+  transition: box-shadow 0.35s ease;
+}
+
+.insight-card:hover .insight-image-link {
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.55);
+}
+
+.insight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.insight-card:hover .insight-image {
+  transform: scale(1.06);
+}
+
+/* Placeholder when no image */
+.insight-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2744, #1e3c72);
+}
+
+/* — Text area (NO card background, plain dark bg) — */
+.insight-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0;
+  /* no padding — text sits directly on dark bg */
+}
+
+/* — Reference: "Business, Travel — July 2, 2032"
+   Bold category text + em-dash + muted date — */
+.insight-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+/* Bold "Blog" / "News" text — matches reference bold category */
+.insight-category {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+
+/* Em-dash separator */
+.insight-card-header .cat-sep {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0 6px;
+  font-weight: 400;
+}
+
+/* Date text after dash — grey */
+.insight-card-date {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* — Title: bold, white, large — exact reference — */
+.insight-content h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.22rem;
+  font-weight: 800;
+  line-height: 1.38;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+}
+
+.insight-content h3 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.25s ease;
+}
+
+.insight-content h3 a:hover {
+  color: #c5a059;
+}
+
+/* — Excerpt: grey, smaller — */
+.insight-excerpt {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.68;
+  margin-bottom: 20px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* — Author row: circular avatar with photo/initial + bold name + role — */
+.insight-author-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 0;
+}
+
+/* Reference: avatar is a circle with a real photo look, bordered */
+.insight-author-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border: 2px solid rgba(197, 160, 89, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(197, 160, 89, 0.15);
+  overflow: hidden;
+}
+
+.insight-author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insight-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* "Sergy Campbell" — bold white */
+.insight-author-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+/* "CEO and Founder" — grey subtitle */
+.insight-author-role {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* ==============================
+   NO BORDER DIVIDER between cards
+   Reference uses open grid, dark bg
+   ============================== */
+
+/* ==============================
+   PAGINATION
+   ============================== */
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.pagination-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.pagination-btn {
+  padding: 9px 24px;
+  background: rgba(197, 160, 89, 0.07);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  color: #c5a059;
+  border-radius: 50px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #c5a059, #9e7d43);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.pagination-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.pagination-btn:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.28);
+  transform: translateY(-1px);
+}
+
+.pagination-btn:disabled {
+  border-color: rgba(255, 255, 255, 0.05);
+  color: rgba(197, 160, 89, 0.2);
+  cursor: not-allowed;
+}
+
+.page-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.page-dot.active {
+  background: #c5a059;
+  border-color: #c5a059;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.5);
+  transform: scale(1.35);
+}
+
+/* ==============================
+   LOADING / EMPTY
+   ============================== */
+.loading,
+.no-insights {
+  text-align: center;
+  padding: 80px 20px;
+  color: #475569;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media screen and (max-width: 1024px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .insights-page-hero {
+    padding: 50px 20px 70px;
+  }
+
+  .insights-page-hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .insights-body {
+    padding: 50px 16px 80px;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .insight-image-link {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .insights-page-hero h1 {
+    font-size: 2rem;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.74rem;
+  }
+}

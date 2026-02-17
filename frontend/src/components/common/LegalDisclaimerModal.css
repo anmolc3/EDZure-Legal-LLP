@@ -1,0 +1,412 @@
+/* =========================================
+   LEGAL DISCLAIMER MODAL — EdZure Legal LLP
+   Theme: dark navy #0f172a + gold #c5a059
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Lato:wght@300;400;700;900&display=swap');
+
+/* ── Overlay ──────────────────────────── */
+.disclaimer-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 9, 20, 0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: overlayIn 0.35s ease both;
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Modal shell ──────────────────────── */
+.disclaimer-modal {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  max-width: 660px;
+  width: 100%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(197, 160, 89, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: modalUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes modalUp {
+  from {
+    transform: translateY(40px) scale(0.97);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animated gold top strip */
+.disclaimer-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #c5a059 30%, #f3d38b 50%, #c5a059 70%, transparent 100%);
+  z-index: 2;
+}
+
+/* Subtle background glow */
+.disclaimer-modal::after {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Header ───────────────────────────── */
+.disclaimer-modal-header {
+  padding: 32px 36px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.modal-header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c5a059;
+  margin: 0 auto 18px;
+  box-shadow: 0 0 24px rgba(197, 160, 89, 0.12);
+}
+
+.disclaimer-modal-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.disclaimer-modal-header h2 em {
+  font-style: italic;
+  color: #f3d38b;
+}
+
+.modal-header-sub {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Content area ─────────────────────── */
+.disclaimer-modal-content {
+  padding: 0 36px 24px;
+  overflow-y: auto;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom scrollbar */
+.disclaimer-modal-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.disclaimer-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.disclaimer-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.3);
+  border-radius: 4px;
+}
+
+.disclaimer-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 160, 89, 0.5);
+}
+
+/* ── Scroll box ───────────────────────── */
+.disclaimer-scroll {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 24px 26px;
+  overflow-y: auto;
+  max-height: 260px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.disclaimer-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.disclaimer-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.disclaimer-scroll::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.25);
+  border-radius: 4px;
+}
+
+/* Individual scroll items */
+.scroll-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scroll-item:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.scroll-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.scroll-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c5a059;
+  flex-shrink: 0;
+  box-shadow: 0 0 5px rgba(197, 160, 89, 0.5);
+}
+
+.scroll-item h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.scroll-item p {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.72;
+  margin: 0;
+  padding-left: 16px;
+}
+
+/* ── Checkbox row ─────────────────────── */
+.disclaimer-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 18px 20px;
+  background: rgba(197, 160, 89, 0.04);
+  border: 1px solid rgba(197, 160, 89, 0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.disclaimer-checkbox-row:hover {
+  background: rgba(197, 160, 89, 0.07);
+  border-color: rgba(197, 160, 89, 0.22);
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(197, 160, 89, 0.4);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox.checked {
+  background: linear-gradient(135deg, #c5a059, #9e7d43);
+  border-color: #c5a059;
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
+}
+
+.custom-checkbox svg {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.2s ease;
+}
+
+.custom-checkbox.checked svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.checkbox-label strong {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+/* ── Footer ───────────────────────────── */
+.disclaimer-modal-footer {
+  padding: 22px 36px 30px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Thin separator */
+.disclaimer-modal-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 36px;
+  right: 36px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-accept {
+  width: 100%;
+  padding: 15px 32px;
+  background: linear-gradient(135deg, #c5a059 0%, #9e7d43 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: all 0.28s ease;
+  box-shadow: 0 6px 22px rgba(197, 160, 89, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep on hover */
+.btn-accept::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transition: left 0.55s ease;
+}
+
+.btn-accept:hover::after {
+  left: 160%;
+}
+
+.btn-accept:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(197, 160, 89, 0.4);
+  background: linear-gradient(135deg, #d4b06a, #c5a059);
+}
+
+.btn-accept:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
+}
+
+.btn-accept:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-accept:disabled::after {
+  display: none;
+}
+
+.disclaimer-note {
+  margin-top: 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  color: #334155;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── Body lock ────────────────────────── */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ── Responsive ───────────────────────── */
+@media screen and (max-width: 640px) {
+  .disclaimer-modal-header {
+    padding: 26px 24px 18px;
+  }
+
+  .disclaimer-modal-content {
+    padding: 0 24px 20px;
+  }
+
+  .disclaimer-modal-footer {
+    padding: 18px 24px 26px;
+  }
+
+  .disclaimer-modal-footer::before {
+    left: 24px;
+    right: 24px;
+  }
+
+  .disclaimer-modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .disclaimer-scroll {
+    max-height: 220px;
+  }
+}

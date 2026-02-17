@@ -1,0 +1,132 @@
+.footer {
+  background: linear-gradient(135deg, #0f172a 0%, #132857 100%);
+  color: #e5e7eb;
+  padding: 70px 20px 25px;
+  margin-top: 100px;
+}
+
+/* Main grid */
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 50px;
+}
+
+/* Logo styling */
+.footer-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Section headings */
+.footer-section h3,
+.footer-section h4 {
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+  color: #f5f8fb;
+  position: relative;
+}
+
+.footer-section h3::after,
+.footer-section h4::after {
+  content: '';
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #C9A24D, transparent);
+  display: block;
+  margin-top: 8px;
+}
+
+/* Text */
+.footer-section p {
+  color: #9ca3af;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Lists */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+/* Links */
+.footer-section ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-section ul li a::before {
+  content: '›';
+  margin-right: 8px;
+  color: #C9A24D;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff;
+  padding-left: 5px;
+}
+
+.footer-section ul li a:hover::before {
+  opacity: 1;
+}
+
+/* Contact text items */
+.footer-section .contact-item {
+  margin-bottom: 12px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Hover glow effect (subtle luxury) */
+.footer-section a:hover {
+  text-shadow: 0 0 6px rgba(247, 249, 250, 0.4);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 0 auto 20px;
+  }
+
+  .footer-section h3::after,
+  .footer-section h4::after {
+    margin: 10px auto 0;
+  }
+
+  .footer-section ul li a::before {
+    display: none;
+  }
+  
+}

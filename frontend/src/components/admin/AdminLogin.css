@@ -1,0 +1,130 @@
+.admin-login-page {
+  /* Fix: Use 100vh to cover the whole screen (removes white bar) */
+  min-height: 100vh;
+  width: 100%;
+  
+  /* Layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Fix: Add top padding so content starts BELOW the fixed navbar */
+  padding-top: 100px; 
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  
+  /* Keep your gradient */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 450px;
+  /* Ensure z-index is lower than navbar (which is usually 1000) */
+  z-index: 1; 
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 50px 40px;
+  /* Stronger shadow for pop */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #1e3c72;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  background-color: #1e3c72;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-block:hover {
+  background-color: #2a5298;
+}
+
+.btn-block:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+}
