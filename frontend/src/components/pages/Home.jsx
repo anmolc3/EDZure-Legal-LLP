@@ -5,6 +5,7 @@ import { insightsAPI, getImageUrl } from '../../services/api';
 import { formatDate, truncateText } from '../../utils/helpers';
 import './Home.css';
 import '../insights/InsightList.css';
+import aboutImage from '../../assets/about-image.jpg';
 
 const Home = () => {
   const [recentInsights, setRecentInsights] = useState([]);
@@ -424,7 +425,7 @@ const Home = () => {
 
               <div className="about-content">
                 <span className="about-subtitle">ABOUT EDZURE LEGAL</span>
-                <h2 className="about-title">A Legacy of Trust and<br />Legal Innovation</h2>
+                <h2 className="about-title">A Legacy of Trust and Legal Innovation</h2>
                 <p className="about-text">
                   Founded on the principles of unwavering ethics and relentless advocacy, EdZure Legal has grown into a premier multi-disciplinary law firm. We represent Fortune 500 companies, startups, and individuals with the same level of intensity and precision.
                 </p>
@@ -448,8 +449,8 @@ const Home = () => {
 
               <div className="about-image-wrapper">
                 <img
-                  src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1000&auto=format&fit=crop"
-                  alt="EdZure Legal Library"
+                  src={aboutImage}
+                  alt="Lawyers Meeting"
                   className="about-img"
                 />
                 <div className="about-quote-box">
