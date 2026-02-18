@@ -172,19 +172,205 @@ footer,
   }
 }
 
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
-  font-weight: 800;
-  margin-bottom: 30px;
-  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  position: relative;
+/* ─────────────────────────────────────────────────────
+   HERO TITLE — SVG stroke-draw animation
+   Each letter's outline is drawn on via stroke-dashoffset,
+   then the fill fades in as the stroke finishes.
+   Font family / size / weight are unchanged (Playfair 800).
+───────────────────────────────────────────────────── */
+.hero-title-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+.hero-title-svg {
+  width: 100%;
+  overflow: visible;
+  display: block;
+}
+
+/* ── Stroke layer — draws each letter outline left→right ── */
+.ls {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.88);
+  stroke-width: 1.6;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: heroDrawStroke 1.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Stagger each letter — inspired by the dash animation pattern */
+.ls-1 {
+  animation-delay: 0.05s;
+}
+
+.ls-2 {
+  animation-delay: 0.12s;
+}
+
+.ls-3 {
+  animation-delay: 0.19s;
+}
+
+.ls-4 {
+  animation-delay: 0.26s;
+}
+
+.ls-5 {
+  animation-delay: 0.31s;
+}
+
+.ls-6 {
+  animation-delay: 0.36s;
+}
+
+.ls-7 {
+  animation-delay: 0.40s;
+}
+
+.ls-8 {
+  animation-delay: 0.44s;
+}
+
+.ls-9 {
+  animation-delay: 0.51s;
+}
+
+.ls-10 {
+  animation-delay: 0.58s;
+}
+
+.ls-11 {
+  animation-delay: 0.65s;
+}
+
+.ls-12 {
+  animation-delay: 0.71s;
+}
+
+.ls-13 {
+  animation-delay: 0.74s;
+}
+
+.ls-14 {
+  animation-delay: 0.78s;
+}
+
+.ls-15 {
+  animation-delay: 0.84s;
+}
+
+.ls-16 {
+  animation-delay: 0.90s;
+}
+
+@keyframes heroDrawStroke {
+
+  0%,
+  50% {
+    stroke-dashoffset: 1500;
+    opacity: 1;
+  }
+
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* ── Fill layer — fades in as stroke completes ── */
+.lf {
+  fill: transparent;
+  animation: heroFillIn 0.5s ease forwards;
+}
+
+.lf-1 {
+  animation-delay: 1.00s;
+}
+
+.lf-2 {
+  animation-delay: 1.04s;
+}
+
+.lf-3 {
+  animation-delay: 1.08s;
+}
+
+.lf-4 {
+  animation-delay: 1.11s;
+}
+
+.lf-5 {
+  animation-delay: 1.13s;
+}
+
+.lf-6 {
+  animation-delay: 1.15s;
+}
+
+.lf-7 {
+  animation-delay: 1.18s;
+}
+
+.lf-8 {
+  animation-delay: 1.21s;
+}
+
+.lf-9 {
+  animation-delay: 1.24s;
+}
+
+.lf-10 {
+  animation-delay: 1.27s;
+}
+
+.lf-11 {
+  animation-delay: 1.29s;
+}
+
+.lf-12 {
+  animation-delay: 1.31s;
+}
+
+.lf-13 {
+  animation-delay: 1.33s;
+}
+
+.lf-14 {
+  animation-delay: 1.35s;
+}
+
+@keyframes heroFillIn {
+  0% {
+    fill: transparent;
+  }
+
+  100% {
+    fill: url(#titleGrad);
+  }
+}
+
+/* Fallback: if linearGradient isn't supported, fill white */
+@supports not (fill: url(#x)) {
+  .lf {
+    animation-name: heroFillInFallback;
+  }
+
+  @keyframes heroFillInFallback {
+    0% {
+      fill: transparent;
+    }
+
+    100% {
+      fill: #ffffff;
+    }
+  }
 }
 
 /* Elegant Divider */
@@ -439,7 +625,7 @@ footer,
 }
 
 .slider-control.inactive:hover {
-  cursor: auto;
+  cursor: default;
 }
 
 .slider-control:not(.inactive):hover {
@@ -623,44 +809,99 @@ footer,
 }
 
 /* =========================================
-   HOME ABOUT SECTION (Image Restored)
+   HOME ABOUT SECTION — Asymmetric Diagonal Layout
    ========================================= */
 .home-about-section {
-  padding: 100px 0;
-  background-color: #ffffff;
-  color: #333;
   position: relative;
+  min-height: 700px;
+  background-color: #ffffff;
+  overflow: hidden;
   z-index: 5;
 }
 
-.home-about-section .container {
-  max-width: 1200px;
+/* Main asymmetric container */
+.about-asymmetric-container {
+  position: relative;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.about-grid {
+  min-height: 700px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+  grid-template-columns: 1fr;
+  padding: 0;
 }
 
-.about-content {
-  padding-right: 20px;
+/* ── Background image layer — diagonal clip-path ── */
+.about-image-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 58%;
+  height: 100%;
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+
+.about-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.88) contrast(1.05);
+  transition: transform 6s ease;
+}
+
+.about-image-layer:hover .about-bg-img {
+  transform: scale(1.04);
+}
+
+/* Dark overlay on image */
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+      rgba(15, 23, 42, 0.75) 0%,
+      rgba(15, 23, 42, 0.25) 60%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+/* ── Diagonal gold accent strip ── */
+.about-diagonal-accent {
+  position: absolute;
+  top: 0;
+  right: 58%;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, #c5a059 15%, #c5a059 85%, transparent 100%);
+  transform: skewX(-12deg);
+  transform-origin: top;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+  pointer-events: none;
+}
+
+/* ── Content panel — left side white background ── */
+.about-content-panel {
+  position: relative;
+  z-index: 10;
+  padding: 100px 80px 100px 80px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.about-content-inner {
+  max-width: 580px;
 }
 
 .about-subtitle {
   display: block;
   color: #c5a059;
-  font-size: 0.85rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+  letter-spacing: 2.5px;
+  margin-bottom: 18px;
 }
 
 .about-title {
@@ -668,100 +909,300 @@ footer,
   font-size: 3.2rem;
   color: #0f172a;
   line-height: 1.15;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   font-weight: 700;
 }
 
 .about-text {
   font-family: 'Lato', sans-serif;
   font-size: 1.05rem;
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.about-stats {
-  display: flex;
-  gap: 60px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #c5a059;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
+  color: #555555;
+  line-height: 1.85;
+  margin-bottom: 22px;
 }
 
 .about-btn {
-  display: inline-block;
-  padding: 14px 35px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
   background: transparent;
   border: 2px solid #0f172a;
   color: #0f172a;
   text-decoration: none;
+  font-family: 'Lato', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
+  letter-spacing: 1.2px;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
-  border-radius: 4px;
-  width: fit-content;
+  border-radius: 2px;
+  margin-top: 16px;
 }
 
 .about-btn:hover {
   background: #0f172a;
-  color: #fff;
-  border-color: #0f172a;
+  color: #ffffff;
+  transform: translateX(4px);
 }
 
-.about-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
+.about-btn svg {
+  transition: transform 0.3s ease;
 }
 
-.about-img {
-  width: 100%;
-  height: 550px;
-  object-fit: cover;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+.about-btn:hover svg {
+  transform: translateX(4px);
 }
 
-.about-quote-box {
+/* ── Floating stat cards — positioned over image diagonal ── */
+.about-floating-stats {
   position: absolute;
-  bottom: -30px;
-  left: -40px;
-  background: #0f172a;
-  color: #fff;
-  padding: 35px 40px;
-  width: 85%;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  bottom: 80px;
+  right: 120px;
+  display: flex;
+  gap: 20px;
+  z-index: 4;
 }
 
-.about-quote-box p {
+.floating-stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-top: 3px solid #c5a059;
+  padding: 28px 32px;
+  border-radius: 2px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 160px;
+  transition: all 0.35s ease;
+  animation: floatIn 0.8s ease both;
+}
+
+.floating-stat-card:first-child {
+  animation-delay: 0.2s;
+}
+
+.floating-stat-card:last-child {
+  animation-delay: 0.35s;
+}
+
+.floating-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(197, 160, 89, 0.25);
+  border-top-color: #f3d38b;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-stat-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c5a059;
+  margin-bottom: 16px;
+  transition: all 0.35s ease;
+}
+
+.floating-stat-card:hover .floating-stat-icon {
+  background: rgba(197, 160, 89, 0.18);
+  border-color: rgba(197, 160, 89, 0.5);
+  transform: scale(1.08);
+}
+
+.floating-stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #c5a059;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.floating-stat-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+/* ── Quote box — floating over image bottom-left ── */
+.about-quote-floating {
+  position: absolute;
+  bottom: 80px;
+  left: 48%;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 32px 38px;
+  max-width: 420px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  border-left: 4px solid #c5a059;
+  z-index: 4;
+  animation: floatIn 0.8s 0.5s ease both;
+  opacity: 0;
+}
+
+.about-quote-floating::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #c5a059, transparent);
+}
+
+.about-quote-floating p {
   font-family: 'Lato', sans-serif;
   font-style: italic;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.72;
+  color: #cbd5e1;
+  margin: 0 0 12px 0;
+}
+
+.about-quote-floating cite {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #c5a059;
+  font-style: normal;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 1200px) {
+  .about-image-layer {
+    width: 52%;
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .about-diagonal-accent {
+    right: 52%;
+  }
+
+  .about-content-panel {
+    padding: 80px 60px;
+  }
+
+  .about-floating-stats {
+    right: 80px;
+    bottom: 60px;
+  }
+
+  .about-quote-floating {
+    left: 45%;
+    max-width: 360px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .about-asymmetric-container {
+    min-height: auto;
+  }
+
+  /* Stack layout on tablets/mobile */
+  .about-image-layer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    clip-path: none;
+  }
+
+  .about-diagonal-accent {
+    display: none;
+  }
+
+  .about-content-panel {
+    padding: 60px 40px;
+    background: #ffffff;
+  }
+
+  .about-content-inner {
+    max-width: 100%;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-floating-stats {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 40px auto 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 40px;
+  }
+
+  .about-quote-floating {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 40px auto 0;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-image-layer {
+    height: 320px;
+  }
+
+  .about-content-panel {
+    padding: 48px 24px;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-text {
+    font-size: 0.98rem;
+  }
+
+  .about-floating-stats {
+    flex-direction: column;
+    padding: 0 24px;
+  }
+
+  .floating-stat-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-quote-floating {
+    margin: 32px 24px 0;
+    padding: 28px 24px;
+  }
+
+  .about-quote-floating p {
+    font-size: 1rem;
+  }
 }
 
 /* =========================================

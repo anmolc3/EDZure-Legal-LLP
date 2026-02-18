@@ -213,7 +213,83 @@ const Home = () => {
                 <span>Professional Legal Excellence</span>
               </div>
 
-              <h1 className="hero-title">EdZure Legal LLP</h1>
+              {/* SVG stroke-draw title animation */}
+              <div className="hero-title-wrap">
+                <svg
+                  className="hero-title-svg"
+                  viewBox="0 0 880 110"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="EdZure Legal LLP"
+                  role="img"
+                >
+                  <defs>
+                    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#ffffff" />
+                      <stop offset="100%" stopColor="#e2e8f0" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Layer 1 — stroke outline that draws on letter by letter */}
+                  <text
+                    fontFamily="'Playfair Display', serif"
+                    fontSize="82"
+                    fontWeight="800"
+                    letterSpacing="3"
+                    textAnchor="middle"
+                    x="440" y="88"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.85)"
+                    strokeWidth="1.6"
+                    paintOrder="stroke"
+                  >
+                    <tspan className="ls ls-1">E</tspan>
+                    <tspan className="ls ls-2">d</tspan>
+                    <tspan className="ls ls-3">Z</tspan>
+                    <tspan className="ls ls-4">u</tspan>
+                    <tspan className="ls ls-5">r</tspan>
+                    <tspan className="ls ls-6">e</tspan>
+                    <tspan className="ls ls-7"> </tspan>
+                    <tspan className="ls ls-8">L</tspan>
+                    <tspan className="ls ls-9">e</tspan>
+                    <tspan className="ls ls-10">g</tspan>
+                    <tspan className="ls ls-11">a</tspan>
+                    <tspan className="ls ls-12">l</tspan>
+                    <tspan className="ls ls-13"> </tspan>
+                    <tspan className="ls ls-14">L</tspan>
+                    <tspan className="ls ls-15">L</tspan>
+                    <tspan className="ls ls-16">P</tspan>
+                  </text>
+
+                  {/* Layer 2 — filled text fades in as stroke finishes */}
+                  <text
+                    fontFamily="'Playfair Display', serif"
+                    fontSize="82"
+                    fontWeight="800"
+                    letterSpacing="3"
+                    textAnchor="middle"
+                    x="440" y="88"
+                    stroke="none"
+                    paintOrder="fill"
+                  >
+                    <tspan className="lf lf-1">E</tspan>
+                    <tspan className="lf lf-2">d</tspan>
+                    <tspan className="lf lf-3">Z</tspan>
+                    <tspan className="lf lf-4">u</tspan>
+                    <tspan className="lf lf-5">r</tspan>
+                    <tspan className="lf lf-6">e</tspan>
+                    <tspan> </tspan>
+                    <tspan className="lf lf-7">L</tspan>
+                    <tspan className="lf lf-8">e</tspan>
+                    <tspan className="lf lf-9">g</tspan>
+                    <tspan className="lf lf-10">a</tspan>
+                    <tspan className="lf lf-11">l</tspan>
+                    <tspan> </tspan>
+                    <tspan className="lf lf-12">L</tspan>
+                    <tspan className="lf lf-13">L</tspan>
+                    <tspan className="lf lf-14">P</tspan>
+                  </text>
+                </svg>
+              </div>
 
               <div className="hero-divider">
                 <span className="hero-divider-line"></span>
