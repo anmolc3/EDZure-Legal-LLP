@@ -52,24 +52,43 @@ const Navbar = () => {
           {/* ── Logo ── */}
           <Link to="/" className="top-navbar__logo">
             <svg
-              width="200" height="40"
-              viewBox="0 0 260 60"
+              width="140" height="40"
+              viewBox="0 0 700 200"
               xmlns="http://www.w3.org/2000/svg"
               aria-label="EdZure Legal Logo"
             >
               <defs>
-                <linearGradient id="goldShimmerNav" x1="-100%" y1="0%" x2="200%" y2="0%">
-                  <stop offset="0%" stopColor="#9e7d43" />
-                  <stop offset="40%" stopColor="#c5a059" />
-                  <stop offset="50%" stopColor="#f5e3b0" />
-                  <stop offset="60%" stopColor="#c5a059" />
-                  <stop offset="100%" stopColor="#9e7d43">
-                    <animate attributeName="offset" from="0" to="1" dur="2.5s" repeatCount="indefinite" />
-                  </stop>
+                <linearGradient id="goldNavbar" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#f3d38b" />
+                  <stop offset="100%" stopColor="#b8860b" />
                 </linearGradient>
               </defs>
-              <text x="0" y="38" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700" fill="#ffffff">EdZure</text>
-              <text x="120" y="38" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700" fill="url(#goldShimmerNav)">Legal</text>
+
+              {/* Monogram Box */}
+              <rect x="40" y="40" width="120" height="120"
+                stroke="url(#goldNavbar)" strokeWidth="3"
+                fill="none" />
+
+              <text x="100" y="120" textAnchor="middle"
+                fontFamily="'Playfair Display', serif"
+                fontSize="60" fontWeight="700"
+                fill="url(#goldNavbar)">
+                EL
+              </text>
+
+              <text x="220" y="105"
+                fontFamily="'Playfair Display', serif"
+                fontSize="70" fontWeight="700"
+                fill="#ffffff">
+                EDZURE
+              </text>
+
+              <text x="220" y="150"
+                fontFamily="'Playfair Display', serif"
+                fontSize="30" letterSpacing="8"
+                fill="url(#goldNavbar)">
+                LEGAL
+              </text>
             </svg>
           </Link>
 

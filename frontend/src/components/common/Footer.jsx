@@ -10,52 +10,45 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-section">
           <svg
-            width="260"
+            width="210"
             height="60"
-            viewBox="0 0 260 60"
+            viewBox="0 0 700 200"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
             aria-label="EdZure Legal Logo"
             className="footer-logo"
           >
             <defs>
-              <linearGradient id="goldShimmerFooter" x1="-100%" y1="0%" x2="200%" y2="0%">
-                <stop offset="0%" stopColor="#9e7d43"/>
-                <stop offset="40%" stopColor="#c5a059"/>
-                <stop offset="50%" stopColor="#f5e3b0"/>
-                <stop offset="60%" stopColor="#c5a059"/>
-                <stop offset="100%" stopColor="#9e7d43">
-                  <animate
-                    attributeName="offset"
-                    from="0"
-                    to="1"
-                    dur="2.5s"
-                    repeatCount="indefinite"
-                  />
-                </stop>
+              <linearGradient id="goldFooter" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#f3d38b" />
+                <stop offset="100%" stopColor="#b8860b" />
               </linearGradient>
             </defs>
 
-            <text
-              x="0"
-              y="42"
-              fontFamily="Playfair Display, serif"
-              fontSize="36"
-              fontWeight="700"
-              fill="#ffffff"
-            >
-              EdZure
+            {/* Monogram Box */}
+            <rect x="40" y="40" width="120" height="120"
+              stroke="url(#goldFooter)" strokeWidth="3"
+              fill="none" />
+
+            <text x="100" y="120" textAnchor="middle"
+              fontFamily="'Playfair Display', serif"
+              fontSize="60" fontWeight="700"
+              fill="url(#goldFooter)">
+              EL
             </text>
 
-            <text
-              x="135"
-              y="42"
-              fontFamily="Playfair Display, serif"
-              fontSize="36"
-              fontWeight="700"
-              fill="url(#goldShimmerFooter)"
-            >
-              Legal
+            <text x="220" y="105"
+              fontFamily="'Playfair Display', serif"
+              fontSize="70" fontWeight="700"
+              fill="#ffffff">
+              EDZURE
+            </text>
+
+            <text x="220" y="150"
+              fontFamily="'Playfair Display', serif"
+              fontSize="30" letterSpacing="8"
+              fill="url(#goldFooter)">
+              LEGAL
             </text>
           </svg>
           <p>Professional legal services with expertise and integrity.</p>
@@ -68,6 +61,7 @@ const Footer = () => {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/insights">Insights</Link></li>
             <li><Link to="/legal-disclaimer">Legal Disclaimer</Link></li>
+            <li><Link to="/admin/login">Admin Login</Link></li>
           </ul>
         </div>
 
