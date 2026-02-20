@@ -16,7 +16,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'https://edzurelegal.com',
   credentials: true
 }));
 app.use(express.json());
@@ -42,7 +42,7 @@ app.get('/api/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err.stack);
-  
+
   // Multer errors
   if (err.code === 'LIMIT_FILE_SIZE') {
     return res.status(400).json({
@@ -78,7 +78,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🌐 API URL: http://localhost:${PORT}`);
+  console.log(`🌐 API URL configured for production`);
 });
 
 module.exports = app;
