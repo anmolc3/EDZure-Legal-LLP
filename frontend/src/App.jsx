@@ -9,7 +9,7 @@ import Footer from './components/common/Footer';
 import LegalDisclaimerModal from './components/common/LegalDisclaimerModal';
 import ShareButton from './components/common/ShareButton';
 import ScrollToTop from './components/common/ScrollToTop';
-import CursorFollower from './components/common/CursorFollower';
+// import CursorFollower from './components/common/CursorFollower'; // Removed
 
 // Public Pages
 import Home from './components/pages/Home';
@@ -105,7 +105,7 @@ function App() {
 
             {/* Global Floating Share Button */}
             <ShareButton />
-            <CursorFollower />
+            {/* <CursorFollower /> */}
 
             <Footer />
           </div>
